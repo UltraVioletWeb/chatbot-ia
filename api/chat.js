@@ -2,7 +2,7 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         const { message } = req.body;
 
-        const apiUrl = 'https://api-inference.huggingface.co/models/mistralai/Mistral-Small-3.1-24B-Instruct-2503';
+        const apiUrl = 'https://api-inference.huggingface.co/models/gpt2';
         const headers = {
             'Authorization': `Bearer ${process.env.HUGGING_FACE_API_KEY}`,
             'Content-Type': 'application/json'
