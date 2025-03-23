@@ -1,3 +1,12 @@
 {
-
+  "name": "mon-projet-ia",
+  "version": "1.0.0",
+  "description": "Description de mon projet",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
