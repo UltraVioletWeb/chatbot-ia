@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Un projet utilisant l'API de Hugging Face",
   "main": "index.js",
+  "type": "module",  // Ajoute cette ligne
   "dependencies": {
     "axios": "^0.21.1"
   },
