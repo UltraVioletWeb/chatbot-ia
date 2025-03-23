@@ -6,9 +6,10 @@ export default async function handler(req, res) {
         // Utilisation de Hugging Face API pour générer la réponse
         const apiUrl = 'https://api-inference.huggingface.co/models/gpt2';
         const headers = {
-            'Authorization': `Bearer YOUR_HUGGING_FACE_API_KEY`,
+            'Authorization': `Bearer ${process.env.HUGGING_FACE_API_KEY}`,
             'Content-Type': 'application/json'
-        };
+};
+
 
         const response = await fetch(apiUrl, {
             method: 'POST',
