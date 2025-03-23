@@ -6,6 +6,12 @@ export default async function handler(req, res) {
         const apiUrl = 'https://api.groq.ai/v1/predict'; // URL de l'API Groq
         const API_TOKEN = process.env.GROQ_API_KEY; // Clé API Groq
 
+        // Vérifiez si la clé API est définie
+        if (!API_TOKEN) {
+            console.error('Clé API manquante');
+            return res.status(500).json({ error: 'Clé API manquante. Vérifiez vos variables d\'environnement.' });
+        }
+
         const headers = {
             'Authorization': `Bearer ${API_TOKEN}`, // Utilise la clé API stockée dans les variables d'environnement
             'Content-Type': 'application/json'
@@ -33,11 +39,17 @@ export default async function handler(req, res) {
             // Analyse des données de réponse
             const data = await response.json();
 
+            // Vérifiez si la réponse est bien formée
+            if (!data || !data[0]?.generated_text) {
+                console.error('Réponse API invalide', data);
+                return res.status(500).json({ error: 'Réponse invalide de l\'API Groq' });
+            }
+
             // Journal des données pour déboguer
             console.log('Réponse API:', data);
 
-            // Retourne la réponse générée ou un message par défaut
-            res.status(200).json({ response: data[0]?.generated_text || 'Désolé, je n\'ai pas pu comprendre.' });
+            // Retourne la réponse générée
+            res.status(200).json({ response: data[0].generated_text });
         } catch (error) {
             // Gestion des erreurs internes
             console.error('Erreur interne:', error.message);
@@ -45,6 +57,6 @@ export default async function handler(req, res) {
         }
     } else {
         // Gestion des méthodes non autorisées
-        res.status(405).json({ error: 'Method Not Allowed' });
+        res.status(405).json({ error: 'Méthode non autorisée. Utilisez une requête POST.' });
     }
 }
