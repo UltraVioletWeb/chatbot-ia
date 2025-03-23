@@ -2,10 +2,18 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         const { message } = req.body;
 
-        // URL de l'API Hugging Face pour le modèle sélectionné
-        const apiUrl = 'https://api-inference.huggingface.co/models/gpt2'; // Remplacez par un autre modèle si nécessaire
+       // URL de l'API Hugging Face pour le modèle sélectionné
+       // const apiUrl = 'https://api-inference.huggingface.co/models/gpt2'; // Remplacez par un autre modèle si nécessaire
+       // const headers = {
+       //     'Authorization': `Bearer ${process.env.HUGGING_FACE_API_KEY}`, // Assurez-vous que la clé est définie
+       //    'Content-Type': 'application/json'
+
+
+            // Remplace par l'URL d'API Groq
+const apiUrl = 'https://api.groq.ai/v1/predict'; // Remplacer par l'URL Groq
+const API_TOKEN = process.env.GROQ_API_KEY; // Ta clé API Groq
         const headers = {
-            'Authorization': `Bearer ${process.env.HUGGING_FACE_API_KEY}`, // Assurez-vous que la clé est définie
+            'Authorization': `Bearer ${process.env.GROQ_API_KEY;}`, // Assurez-vous que la clé est définie
             'Content-Type': 'application/json'
         };
 
