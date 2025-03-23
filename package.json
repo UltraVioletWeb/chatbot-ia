@@ -1,12 +1,19 @@
 {
   "name": "mon-projet-ia",
   "version": "1.0.0",
-  "description": "Description de mon projet",
-  "main": "index.js",
+  "description": "Une application IA",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
-  }
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "18.x"
+  },
+  "author": "Ton nom",
+  "license": "MIT"
 }
