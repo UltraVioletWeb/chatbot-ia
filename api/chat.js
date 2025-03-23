@@ -2,18 +2,12 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         const { message } = req.body;
 
-       // URL de l'API Hugging Face pour le modèle sélectionné
-       // const apiUrl = 'https://api-inference.huggingface.co/models/gpt2'; // Remplacez par un autre modèle si nécessaire
-       // const headers = {
-       //     'Authorization': `Bearer ${process.env.HUGGING_FACE_API_KEY}`, // Assurez-vous que la clé est définie
-       //    'Content-Type': 'application/json'
+        // URL de l'API Groq
+        const apiUrl = 'https://api.groq.ai/v1/predict'; // URL de l'API Groq
+        const API_TOKEN = process.env.GROQ_API_KEY; // Clé API Groq
 
-
-            // Remplace par l'URL d'API Groq
-const apiUrl = 'https://api.groq.ai/v1/predict'; // Remplacer par l'URL Groq
-const API_TOKEN = process.env.GROQ_API_KEY; // Ta clé API Groq
         const headers = {
-            'Authorization': `Bearer ${process.env.GROQ_API_KEY;}`, // Assurez-vous que la clé est définie
+            'Authorization': `Bearer ${API_TOKEN}`, // Utilise la clé API stockée dans les variables d'environnement
             'Content-Type': 'application/json'
         };
 
@@ -25,14 +19,14 @@ const API_TOKEN = process.env.GROQ_API_KEY; // Ta clé API Groq
                 body: JSON.stringify({
                     inputs: message,
                     parameters: {
-                        framework: 'transformers' // Spécifie le framework
+                        framework: 'transformers' // Spécifie le framework à utiliser
                     }
                 })
             });
 
             // Vérification de la réponse
             if (!response.ok) {
-                console.error('Erreur API Hugging Face:', response.statusText);
+                console.error('Erreur API Groq:', response.statusText);
                 return res.status(response.status).json({ error: response.statusText });
             }
 
