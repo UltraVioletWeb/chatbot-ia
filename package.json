@@ -1,8 +1,8 @@
 {
   "name": "mon-projet-ia",
   "version": "1.0.0",
-  "description": "Une application IA",
-  "main": "index.js",
+  "description": "Une application IA utilisant Hugging Face",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
@@ -11,7 +11,7 @@
   },
   "devDependencies": {},
   "engines": {
-    "node": "14.x"
+    "node": "18.x"
   },
   "author": "Ton nom",
   "license": "MIT"
