@@ -1,7 +1,7 @@
 {
   "name": "mon-projet-ia",
   "version": "1.0.0",
-  "description": "Une application d'IA",
+  "description": "Une application IA",
   "main": "index.js",
   "scripts": {
     "start": "node server.js"
